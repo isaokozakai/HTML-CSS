@@ -1,0 +1,35 @@
+* {
+  height: 100%;
+  margin: 0;
+}
+
+#menu {
+  display: flex;
+  place-content: center center;
+}
+
+.window {
+  margin: auto 20px;
+  width: 260px;
+  height: 185px;
+  overflow: hidden;
+}
+
+.content {
+  transition: ease-in 1.5s;
+  text-align: center;
+}
+
+.window:hover .content {
+  transform: translateY(-190px);
+}
+
+
+.window img, .window .content-text {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.window .content-text {
+  text-align: left;
+}
