@@ -21,34 +21,34 @@ window.onload = function () {
   };
 
   document.getElementById("zero").onclick = function (e) {
-    addButtonValueToTextBox(0);
+    addButtonValueToTextBox("0");
   };
   document.getElementById("one").onclick = function (e) {
-    addButtonValueToTextBox(1);
+    addButtonValueToTextBox("1");
   };
   document.getElementById("two").onclick = function (e) {
-    addButtonValueToTextBox(2);
+    addButtonValueToTextBox("2");
   };
   document.getElementById("three").onclick = function (e) {
-    addButtonValueToTextBox(3);
+    addButtonValueToTextBox("3");
   };
   document.getElementById("four").onclick = function (e) {
-    addButtonValueToTextBox(4);
+    addButtonValueToTextBox("4");
   };
   document.getElementById("five").onclick = function (e) {
-    addButtonValueToTextBox(5);
+    addButtonValueToTextBox("5");
   };
   document.getElementById("six").onclick = function (e) {
-    addButtonValueToTextBox(6);
+    addButtonValueToTextBox("6");
   };
   document.getElementById("seven").onclick = function (e) {
-    addButtonValueToTextBox(7);
+    addButtonValueToTextBox("7");
   };
   document.getElementById("eight").onclick = function (e) {
-    addButtonValueToTextBox(8);
+    addButtonValueToTextBox("8");
   };
   document.getElementById("nine").onclick = function (e) {
-    addButtonValueToTextBox(9);
+    addButtonValueToTextBox("9");
   };
 
   document.getElementById("dot").onclick = function (e) {
@@ -65,13 +65,13 @@ window.onload = function () {
     switch (whichButton) {
       case "+":
       case ".":
-        if (resultBox.textContent && isOperator(resultBox.textContent.slice(-1))) {
+        if (resultBox.textContent && isSymbol(resultBox.textContent.slice(-1))) {
           whichButton = "";
           value = "";
         }
         break;
       case "×":
-        if (resultBox.textContent && !isOperator(resultBox.textContent.slice(-1))) {
+        if (resultBox.textContent && !isSymbol(resultBox.textContent.slice(-1))) {
           value = "*";
         } else {
           whichButton = "";
@@ -79,7 +79,7 @@ window.onload = function () {
         }
         break;
       case "÷":
-        if (resultBox.textContent && !isOperator(resultBox.textContent.slice(-1))) {
+        if (resultBox.textContent && !isSymbol(resultBox.textContent.slice(-1))) {
           value = "/";
         } else {
           whichButton = "";
@@ -94,14 +94,25 @@ window.onload = function () {
           value = "";
         }
         break;
+      case "0":
+        if (resultBox.textContent == "0") {
+          whichButton = "";
+          value = "";
+        }
+        break;
       default:
+        if (resultBox.textContent == "0") {
+          resultBox.textContent = whichButton;
+          resultValue = value;
+          return;
+        }
         break;
     }
-    resultValue += value;
     resultBox.textContent += whichButton;
+    resultValue += value;
   };
 
-  function isOperator(value) {
+  function isSymbol(value) {
     switch (value) {
       case "+":
       case "-":
