@@ -63,8 +63,13 @@ window.onload = function () {
     let value = whichButton;
 
     switch (whichButton) {
-      case "+":
       case ".":
+        if ((resultBox.textContent && isSymbol(resultBox.textContent.slice(-1)))
+          || resultBox.textContent.indexOf('.') == 1) {
+          return;
+        }
+        break;
+      case "+":
         if (resultBox.textContent && isSymbol(resultBox.textContent.slice(-1))) {
           return;
         }
