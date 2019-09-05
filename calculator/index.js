@@ -66,38 +66,33 @@ window.onload = function () {
       case "+":
       case ".":
         if (resultBox.textContent && isSymbol(resultBox.textContent.slice(-1))) {
-          whichButton = "";
-          value = "";
+          return;
         }
         break;
       case "×":
         if (resultBox.textContent && !isSymbol(resultBox.textContent.slice(-1))) {
           value = "*";
         } else {
-          whichButton = "";
-          value = "";
+          return;
         }
         break;
       case "÷":
         if (resultBox.textContent && !isSymbol(resultBox.textContent.slice(-1))) {
           value = "/";
         } else {
-          whichButton = "";
-          value = "";
+          return;
         }
         break;
       case "-":
         if (!resultBox.textContent) {
           value += "0-"
         } else if (resultBox.textContent.slice(-1) == "+" || resultBox.textContent.slice(-1) == "-") {
-          whichButton = "";
-          value = "";
+          return;
         }
         break;
       case "0":
         if (resultBox.textContent == "0") {
-          whichButton = "";
-          value = "";
+          return;
         }
         break;
       default:
